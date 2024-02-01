@@ -4,3 +4,23 @@ on:
   push:
     branches:
       - main
+
+
+jobs:
+  code-scan:
+    name: Code Scan with Snyk
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+    - name: Set Up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12.1'
+    - name: Code Scan
+      uses: snyk/actions/python@master
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      with:
+        command: test
+        args: --severity-threshold=critical
