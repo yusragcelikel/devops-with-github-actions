@@ -68,7 +68,7 @@ jobs:
       IMAGE_NAME: My First Project
       #PROJECT_ID: polar-standard-412817
       PROJECT_ID: ${{ secrets.GKE_PROJECT }}
-      GKE_CLUSTER: autopilot-cluster-1
+      GKE_CLUSTER: devops-with-github-actions
       GKE_ZONE: europe-southwest1
       DEPLOYMENT_NAME: devops-with-github-actions
       IMAGE: devops-with-github-actions-image
