@@ -1,0 +1,6 @@
+name: DevSecOps Workflow
+
+on:
+  push:
+    branches:
+      - main
