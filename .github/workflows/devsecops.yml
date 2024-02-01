@@ -44,3 +44,18 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: yusragokce/devops-with-github-actions:latest
+
+  image-scan:
+    name: Scan the Docker image with Snyk
+    runs-on: ubuntu-latest
+    needs: build-and-push-image
+    steps:
+    - name: Scan the Docker image with Snyk
+      uses: snyk/actions/docker@master
+      continue-on-error: true
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      with:
+        image: yusragokce/devops-with-github-actions:latest
+        command: test
+        args: --severity-threshold=critical
