@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-with-github-actions
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devops-with-github-actions
+  template:
+    metadata:
+      labels:
+        app: devops-with-github-actions
+    spec:
+      containers:
+        - name: app
+          image: gcr.io/proven-electron-413013/devops-with-github-actions-image:1.0.0
+          imagePullPolicy: Always
